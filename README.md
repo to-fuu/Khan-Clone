@@ -21,7 +21,7 @@ A frontend clone of Khan Academy with a landing page, student dashboard, authent
 
 ```
 /
-├── app/                      # Next.js app directory
+├── src/app/                      # Next.js app directory
 │   ├── admin/                # Admin dashboard pages
 │   ├── authentication/       # Sign-in and sign-up pages
 │   ├── dashboard/            # Student dashboard pages
