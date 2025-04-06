@@ -11,12 +11,13 @@ import {
   Calendar,
   ChartArea,
   ChartBarIncreasing,
+  Circle,
   Contact,
   Headset,
   Key,
   Route,
   Sparkles,
-  Video
+  Video,
 } from "lucide-react";
 import { BsBarChart, BsChatDots, BsLightningCharge } from "react-icons/bs";
 import { FaBookOpen, FaChartLine } from "react-icons/fa";
@@ -32,11 +33,11 @@ export const landingPageData = {
     subtitle:
       "Simply The Best - Representative, Rigorous, with Proven Strategies",
     primaryCTA: {
-      text: "Free 3-Day Trial",
+      text: "Start Free Trial",
       href: "/authentication/signup?trial=true",
     },
     secondaryCTA: {
-      text: "Buy Now",
+      text: "See How It Works",
       href: "/authentication/signup?buy=true",
     },
     imagePlaceholder:
@@ -46,16 +47,16 @@ export const landingPageData = {
     {
       title: "Unmatched Adaptive Practice",
       description:
-        "Our platform adapts to your needs, focusing on weaknesses like tone or main ideas. With 550+ passages, turn weaknesses into strengths through targeted practice.",
+        "Your CARS journey involves mastering a diﬀerent kind of analysis. Our platform identifies precisely where you struggle in adapting your critical thinking skills to CARS passages, allowing you to build personalized practice sets that target your specific challenge areas. Transform weaknesses into strengths through focused practice!",
       icon: <BsLightningCharge className="w-6 h-6" />,
-      image: "/images/qbank-dashboard.png",
+      image: "/images/dashboard.png",
     },
     {
       title: "No Gimmicks, Just Results",
       description:
-        "Simplify your CARS prep with a structured, step-by-step approach. Focus on essential skills to steadily improve your performance without unnecessary complexity.",
+        "Adapting your skills for CARS shouldn't be complicated by confusing strategies or acronyms promising shortcuts. We ditch the gimmicks. Our core strategy focuses purely on skill mastery through a clear, structured path. This step-by-step approach targets the essential abilities needed to master CARS.",
       icon: <BsBarChart className="w-6 h-6" />,
-      image: "/images/simplified-roadmap.png",
+      image: "/images/dashboard.png",
       component: (
         <div className="flex flex-col divide-y bg-background rounded-lg border shadow-lg shadow-black/5">
           <div className="py-3 px-4 scale-105  text-violet-600 font-medium flex items-center justify-between bg-background z-10 shadow-xl shadow-violet-400/10 rounded-t-lg border border-violet-200">
@@ -70,17 +71,16 @@ export const landingPageData = {
         </div>
       ),
     },
-
     {
       title: "Active Learning + AI Insight",
       description:
-        "Engage in active learning with AI-guided SkillDrills. Receive personalized feedback on key CARS skills like tone and main ideas, just like having a personal tutor.",
+        "Forget passive reading! Our interactive SkillDrills put you in the driver's seat, letting you actively practice specific CARS skills — like evaluating arguments — in manageable chunks. This approach allows pinpoint focus so you can build mastery step by step through targeted exercices",
       icon: <BsChatDots className="w-6 h-6" />,
-      image: "/images/ai-insights.png",
+      image: "/images/dashboard.png",
       component: (
         <div className="relative text-violet-500 -mx-8">
           <svg
-           className="w-full"
+            className="w-full"
             viewBox="0 0 400 151"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +300,7 @@ export const landingPageData = {
       name: "Chris L",
       achievement: "CARS Score: 126",
       quote:
-        "I never realized how many patterns I was missing in my mistakes until I started using the AI tutor. It’s like having a CARS coach by my side 24/7, and it made a huge difference in how I approach passages.",
+        "I never realized how many patterns I was missing in my mistakes until I started using the AI tutor. It's like having a CARS coach by my side 24/7, and it made a huge difference in how I approach passages.",
       avatar: "/images/testimonials/vicky.jpg",
     },
     {

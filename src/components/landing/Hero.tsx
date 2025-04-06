@@ -1,14 +1,12 @@
 "use client";
 
+import HeroImage from "@/../public/images/HeroImage.png";
 import type { HeroProps } from "@/types/landing-page";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Check } from "lucide-react";
-import Preview from "@/../public/images/dashboard.png";
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 export default function Hero({
   title,
@@ -18,95 +16,100 @@ export default function Hero({
   imagePlaceholder,
 }: HeroProps) {
   return (
-    <div className="relative overflow-hidden flex flex-col xl:flex-row container max-w-8xl mx-auto gap-8 lg:gap-24 px-4 2xl:px-0 pt-10 sm:pt-12 sm:px-6 lg:pt-16 xl:pt-20">
-      <div className="flex-1">
-        <div className="relative z-10 bg-white mx-auto max-w-3xl lg:w-full">
-          <main className="">
-            <div className="text-center xl:text-left">
-              <div className="flex justify-center xl:justify-start items-center [&>span]:-mr-4 lg:[&>span]:-mr-5 [&>span]:border-2 [&>span]:border-background [&>span]:size-8 lg:[&>span]:size-10 mb-4 lg:mb-6">
-                <Avatar>
-                  <AvatarImage
-                    src="/images/testimonials/albert.jpg"
-                    className="object-top object-cover"
-                  />
-                </Avatar>
-                <Avatar>
-                  <AvatarImage
-                    src="/images/testimonials/jurica.jpg"
-                    className="object-top object-cover"
-                  />
-                </Avatar>
-                <Avatar>
-                  <AvatarImage
-                    src="/images/testimonials/jassir.jpg"
-                    className="object-top object-cover"
-                  />
-                </Avatar>
-                <Avatar>
-                  <AvatarImage
-                    src="/images/testimonials/vicky.jpg"
-                    className="object-top object-cover"
-                  />
-                </Avatar>
-                <p className="ml-8 text-sm text-muted-foreground">
-                  Join <span className="text-foreground">1,000+</span> other who
-                  signed up
-                </p>
-              </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl tracking-tight leading-tight font-medium text-gray-900 sm:text-5xl md:text-6xl"
-              >
-                {title}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-              >
-                {subtitle}
-              </motion.p>
-
-              <div className="mt-5 sm:mt-8 p-2 rounded-full flex items-center lg:justify-start bg-zinc-50 text-base max-w-lg mx-auto xl:mx-0">
-                <Input
-                  className="border-0 bg-transparent h-12 lg:h-14 shadow-none rounded-full placeholder:text-muted-foreground/60 placeholder:text-base"
-                  placeholder="Email address"
-                />
-                <Button className="h-12 lg:h-14 rounded-full tracking-wider px-6 bg-blue-500 shadow">
-                  Book a Demo
-                </Button>
-              </div>
-
-              <ul className="space-y-2 mt-8 lg:mt-12 text-muted-foreground flex flex-col items-center xl:items-start">
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-green-600" /> Unmatched adaptive
-                  practice
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-green-600" />
-                  No Gimmicks, Just results
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-green-600" />
-                  Avtive Learning + AI Insight
-                </li>
-              </ul>
-            </div>
-          </main>
-        </div>
+    <div className="relative py-12 xl:min-h-screen overflow-hidden flex flex-col justify-center">
+      {/* Background image with gradient overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HeroImage}
+          alt="Student studying MCAT CARS"
+          fill
+          priority
+          className="object-cover object-center brightness-[0.85]"
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-700/30" />
       </div>
-      <div className="flex-1 flex">
-        <div className="w-full h-full rounded-xl lg:rounded-[3rem] bg-gradient-to-b from-violet-950 to-violet-300 via-blue-800 via-30% px-4 pt-4 lg:pr-0 lg:pt-10 lg:pl-10 overflow-hidden">
-          <Image
-            alt="Dashboard Preview"
-            src={Preview}
-            width={Preview.width}
-            height={Preview.height}
-            className="h-full w-full object-cover object-left-top rounded-t-lg lg:rounded-tr-none lg:rounded-tl-4xl lg:rounded-br-4xl shadow-2xl min-h-64 rounded-b-none"
-          />
+      
+      {/* Hero content */}
+      <div className="container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-20">
+        <div className="max-w-3xl">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-semibold tracking-tight leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            {title}
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-6 space-y-4 text-base text-white/90 font-medium sm:text-lg md:text-xl"
+          >
+            <p className="flex items-center gap-3">
+              <span className="flex items-center justify-center bg-green-500/20 rounded-full p-1.5">
+                <Check className="size-5 text-green-400" />
+              </span>
+              Unmatched adaptive practice
+            </p>
+            <p className="flex items-center gap-3">
+              <span className="flex items-center justify-center bg-green-500/20 rounded-full p-1.5">
+                <Check className="size-5 text-green-400" />
+              </span>
+              No Gimmicks, Just results
+            </p>
+            <p className="flex items-center gap-3">
+              <span className="flex items-center justify-center bg-green-500/20 rounded-full p-1.5">
+                <Check className="size-5 text-green-400" />
+              </span>
+              Active Learning + AI Insight
+            </p>
+          </motion.div>
+
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-start gap-4">
+            <Button className="h-12 lg:h-14 rounded-full tracking-wider px-6 bg-orange-500 hover:bg-orange-600 shadow-lg transition-all duration-300 flex items-center gap-2 group">
+              {primaryCTA.text}
+              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
+            <Button className="h-12 lg:h-14 rounded-full tracking-wider px-6 bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-all duration-300">
+              {secondaryCTA.text}
+            </Button>
+          </div>
+
+          <div className="mt-10 flex items-center">
+            <div className="flex -space-x-5 mr-4">
+              <Avatar className="border-2 border-slate-800 h-10 w-10">
+                <AvatarImage
+                  src="/images/testimonials/albert.jpg"
+                  className="object-top object-cover"
+                />
+              </Avatar>
+              <Avatar className="border-2 border-slate-800 h-10 w-10">
+                <AvatarImage
+                  src="/images/testimonials/jurica.jpg"
+                  className="object-top object-cover"
+                />
+              </Avatar>
+              <Avatar className="border-2 border-slate-800 h-10 w-10">
+                <AvatarImage
+                  src="/images/testimonials/jassir.jpg"
+                  className="object-top object-cover"
+                />
+              </Avatar>
+              <Avatar className="border-2 border-slate-800 h-10 w-10">
+                <AvatarImage
+                  src="/images/testimonials/vicky.jpg"
+                  className="object-top object-cover"
+                />
+              </Avatar>
+            </div>
+            <p className="text-sm font-medium text-white/80">
+              Join <span className="text-white font-bold">1,000+</span> others who
+              scored <span className="text-orange-400 font-bold">4+ points higher</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

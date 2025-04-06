@@ -14,9 +14,26 @@ import {
   DrawerTrigger,
 } from "./ui/drawer";
 import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -24,16 +41,26 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
 
   return (
     <header
-      className="pt-4 2xl:pt-6 sticky top-0 z-50 h-[104px] -mb-[104px] flex"
+      className={`pt-4 2xl:pt-6 sticky top-0 z-50 h-[104px] -mb-[104px] flex transition-all duration-300 ${
+        isScrolled ? "" : "bg-transparent"
+      }`}
       aria-label={ariaLabel}
     >
       <div className="mx-auto max-w-[94rem] px-4 2xl:px-0 w-full">
-        <div className="w-full bg-slate-900 px-12 dark text-foreground rounded-xl lg:rounded-2xl py-2 relative overflow-hidden">
-          <div className="w-80 h-16 absolute bg-violet-500 rounded-full left-1/2 -translate-x-1/2 translate-y-1/2 blur-3xl" />
+        <div 
+          className={`w-full px-12 rounded-xl lg:rounded-2xl py-2 relative overflow-hidden transition-all duration-300 ${
+            isScrolled 
+              ? "bg-slate-900 shadow-md" 
+              : "bg-transparent backdrop-blur-sm bg-slate-900/20"
+          }`}
+        >
+          <div className={`w-80 h-16 absolute rounded-full left-1/2 -translate-x-1/2 translate-y-1/2 blur-3xl ${
+            isScrolled ? "bg-violet-500" : "bg-violet-500/30"
+          }`} />
 
           <div className="flex h-16 items-center justify-between relative">
             {/* Logo */}
-            <Link href="/" className="text-2xl font-bold">
+            <Link href="/" className="text-2xl font-bold text-white">
               528Prep
             </Link>
 
@@ -43,7 +70,7 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
                 href="/features"
                 className={`text-base ${
                   isActive("/features") ? "text-white" : "text-white/80"
-                } transition-colors`}
+                } transition-colors hover:text-white`}
               >
                 Features
               </Link>
@@ -51,7 +78,7 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
                 href="/about-us"
                 className={`text-base ${
                   isActive("/about-us") ? "text-white" : "text-white/80"
-                } transition-colors`}
+                } transition-colors hover:text-white`}
               >
                 About Us
               </Link>
@@ -59,7 +86,7 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
                 href="/contact-us"
                 className={`text-base ${
                   isActive("/contact-us") ? "text-white" : "text-white/80"
-                } transition-colors`}
+                } transition-colors hover:text-white`}
               >
                 Contact
               </Link>
@@ -67,14 +94,14 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
                 href="/faq"
                 className={`text-base font-medium ${
                   isActive("/faq") ? "text-white" : "text-white/80"
-                } transition-colors`}
+                } transition-colors hover:text-white`}
               >
                 FAQ
               </Link>
             </nav>
 
             {/* Auth Links */}
-            <div className=" items-center space-x-4 hidden lg:flex">
+            <div className="items-center space-x-4 hidden lg:flex">
               <Button
                 variant={"ghost"}
                 className="text-base hover:!bg-white/20 !text-white hidden lg:flex"
@@ -99,7 +126,7 @@ export default function Navigation({ "aria-label": ariaLabel = "Navigation" }) {
                 <Button
                   variant={"ghost"}
                   size={"icon"}
-                  className="flex lg:hidden size-10"
+                  className="flex lg:hidden size-10 text-white"
                 >
                   <Menu className="size-8" />
                 </Button>
